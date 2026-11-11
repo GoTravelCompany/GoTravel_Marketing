@@ -36,6 +36,7 @@ h3{margin:10px 0 4px;font-size:20px;line-height:1.25}
 .howto p{margin:6px 0;font-size:15px;color:var(--ink)}
 .tip{font-size:14px;color:var(--muted);margin:8px 0 0}
 .flyer{position:relative}
+.reel{width:100%;max-width:420px;height:auto;display:block;margin:0 auto;border-radius:10px;border:1px solid var(--line);background:#000}
 .png{-webkit-touch-callout:default}
 .saveacts{margin:12px 0 0}
 </style>
@@ -52,7 +53,7 @@ h3{margin:10px 0 4px;font-size:20px;line-height:1.25}
 <p><strong>iPhone:</strong> Tap the <strong>Save image</strong> button under the graphic, then tap <strong>Save Image</strong>. It goes to your Photos.</p>
 <p><strong>Windows computer:</strong> Click the <strong>Save image</strong> button under the graphic. It saves to your Downloads folder.</p>
 <p><strong>Mac:</strong> Click the <strong>Save image</strong> button under the graphic. It saves to your Downloads folder. To put it in Photos instead, Control-click the graphic in Safari and choose <strong>Add Image to Photos</strong>.</p>
-<p><strong>Reels:</strong> Tap <strong>Open Reel</strong> on that day's post, then use the download option on the page that opens. Add the Reel to your post and paste in the caption with <strong>Copy caption</strong>.</p>
+<p><strong>Reels:</strong> Tap the <strong>Save video</strong> button under the Reel (on iPhone, then tap <strong>Save Video</strong>). It saves the same places as graphics. Add the Reel to your post and paste in the caption with <strong>Copy caption</strong>.</p>
 </div>
 <h2 class="wk">Dec 1 to 4</h2>
 <div class="card">
@@ -99,7 +100,9 @@ Dreaming of exploring Europe's rivers? Connect with me today and I can help you 
 
 #AvalonWaterways #FeaturedFriday #RiverCruising #EuropeanRiverCruise #GoTravel</p>
 <div class="lbl">Format: Reel</div>
-<p class="acts"><span class="btn alt off">Open Reel: link coming soon</span></p>
+<p class="acts"></p>
+<div class="lbl">Ready-to-download Reel</div>
+<div class="flyer"><video class="reel" src="reels/dec04-avalon.mp4" poster="reels/dec04-avalon.jpg" width="1080" height="1920" controls playsinline preload="metadata"></video></div>
 </div>
 <h2 class="wk">Dec 7 to 11</h2>
 <div class="card">
@@ -257,7 +260,7 @@ function toFile(img,name){
     for(var i=0;i<b.length;i++)a[i]=b.charCodeAt(i);
     return Promise.resolve(new File([a],name,{type:mime}));
   }
-  return fetch(u).then(function(r){return r.blob()}).then(function(bl){return new File([bl],name,{type:bl.type||'image/png'})});
+  return fetch(u).then(function(r){return r.blob()}).then(function(bl){return new File([bl],name,{type:bl.type||(img.tagName==='VIDEO'?'video/mp4':'image/png')})});
 }
 var dl=null;
 try{if(window.claude&&claude.use)claude.use('downloads').then(function(d){dl=d}).catch(function(){})}catch(e){}
@@ -267,19 +270,22 @@ function download(file){
   document.body.appendChild(a);a.click();
   setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},4000);
 }
-var imgs=document.querySelectorAll('.flyer img.png');
+var imgs=document.querySelectorAll('.flyer img.png, .flyer video.reel');
 for(var k=0;k<imgs.length;k++)(function(img,k){
   var card=img.closest('.card'),d=card&&card.querySelector('.date');
-  var name='GoTravel-'+((d?d.firstChild.textContent:'image-'+(k+1)).trim().replace(/[^A-Za-z0-9]+/g,'-'))+'.png';
+  var isVid=img.tagName==='VIDEO';
+  var name='GoTravel-'+((d?d.firstChild.textContent:'image-'+(k+1)).trim().replace(/[^A-Za-z0-9]+/g,'-'))+(isVid?'-Reel.mp4':'.png');
   var p=document.createElement('p');p.className='saveacts';
-  var b=document.createElement('button');b.type='button';b.className='btn';b.textContent='Save image';
+  var b=document.createElement('button');b.type='button';b.className='btn';b.textContent=isVid?'Save video':'Save image';
   var m=document.createElement('span');m.className='ok';
   p.appendChild(b);p.appendChild(m);img.closest('.flyer').insertAdjacentElement('afterend',p);
   var file=null;
   // Build the file ahead of time: iPhone only opens the share menu if it happens right on the tap.
-  toFile(img,name).then(function(f){file=f}).catch(function(){});
+  // Videos load when they come near the screen, so visitors don't download every Reel up front.
+  function prep(){if(!file)toFile(img,name).then(function(f){file=f}).catch(function(){})}
+  if(isVid&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();prep()}},{rootMargin:'800px'});io.observe(img)}else prep();
   b.onclick=function(){
-    if(!file){m.textContent='Still loading, try again in a second.';return}
+    if(!file){m.textContent='Still loading, try again in a few seconds.';prep();return}
     m.textContent='';
     var isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
     if(isIOS&&navigator.canShare&&navigator.canShare({files:[file]})){
