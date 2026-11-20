@@ -37,6 +37,7 @@ h3{margin:10px 0 4px;font-size:20px;line-height:1.25}
 .tip{font-size:14px;color:var(--muted);margin:8px 0 0}
 .flyer{position:relative}
 .reel{width:100%;max-width:420px;height:auto;display:block;margin:0 auto;border-radius:10px;border:1px solid var(--line);background:#000}
+.reel.wide{max-width:100%}
 .png{-webkit-touch-callout:default}
 .saveacts{margin:12px 0 0}
 </style>
@@ -214,8 +215,10 @@ Whether it's hiking in Peru, exploring Morocco or a wellness escape in Bali, the
 Ready to plan your next girls' getaway? Message me and let's find the perfect tour!
 
 #WomenWhoTravel #WomenOnlyTours #SoloFemaleTravel #GirlsTrip #GoTravel</p>
-<div class="lbl">Format: Reel</div>
-<p class="acts"><span class="btn alt off">Open Reel: link coming soon</span></p>
+<div class="lbl">Format: Video</div>
+<p class="acts"></p>
+<div class="lbl">Ready-to-download video</div>
+<div class="flyer"><video class="reel wide" src="reels/dec18-insight-women.mp4" poster="reels/dec18-insight-women.jpg" width="540" height="304" controls playsinline preload="metadata"></video></div>
 </div>
 <h2 class="wk">Dec 21 to 25</h2>
 <div class="card">
@@ -311,7 +314,7 @@ var imgs=document.querySelectorAll('.flyer img.png, .flyer video.reel');
 for(var k=0;k<imgs.length;k++)(function(img,k){
   var card=img.closest('.card'),d=card&&card.querySelector('.date');
   var isVid=img.tagName==='VIDEO';
-  var name='GoTravel-'+((d?d.firstChild.textContent:'image-'+(k+1)).trim().replace(/[^A-Za-z0-9]+/g,'-'))+(isVid?'-Reel.mp4':'.png');
+  var name='GoTravel-'+((d?d.firstChild.textContent:'image-'+(k+1)).trim().replace(/[^A-Za-z0-9]+/g,'-'))+(isVid?(img.classList.contains('wide')?'-Video.mp4':'-Reel.mp4'):'.png');
   var p=document.createElement('p');p.className='saveacts';
   var b=document.createElement('button');b.type='button';b.className='btn';b.textContent=isVid?'Save video':'Save image';
   var m=document.createElement('span');m.className='ok';
