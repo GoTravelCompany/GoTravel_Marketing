@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Go Travel Monthly Marketing Toolkit</title>
+<meta property="og:title" content="Go Travel Monthly Marketing Toolkit">
+<style>
+:root{--bg:#F5F7F9;--card:#ffffff;--ink:#14202B;--muted:#4A5866;--line:#D5DCE3;--soft:#EAEFF3;--accent:#1F3A5F;--note-bg:#FFE9C2;--note-fg:#7A4300;--m-bg:#1F3A5F;--m-fg:#ffffff;--w-bg:#BFE3EC;--w-fg:#10303A;--f-bg:#F2B84B;--f-fg:#3A2800}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0F1720;--card:#18232F;--ink:#EDF2F6;--muted:#A9B7C4;--line:#2D3C4B;--soft:#223140;--accent:#8FB8E8;--note-bg:#4A3510;--note-fg:#FFD99A;--m-bg:#8FB8E8;--m-fg:#0F2236;--w-bg:#2B6272;--w-fg:#EAF7FB}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0F1720;--card:#18232F;--ink:#EDF2F6;--muted:#A9B7C4;--line:#2D3C4B;--soft:#223140;--accent:#8FB8E8;--note-bg:#4A3510;--note-fg:#FFD99A;--m-bg:#8FB8E8;--m-fg:#0F2236;--w-bg:#2B6272;--w-fg:#EAF7FB}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,Helvetica,Arial,sans-serif;line-height:1.45}
+.wrap{max-width:680px;margin:0 auto;padding:20px 16px 48px}
+.hero{position:relative;overflow:hidden;display:flex;flex-wrap:wrap;align-items:center;gap:16px;padding:22px 20px 34px;margin:0 0 16px;border-radius:18px;color:#fff;background:linear-gradient(120deg,#14304F 0%,#16607A 55%,#22A3B0 100%)}
+.hero-logo{flex:0 0 auto;background:#fff;border-radius:14px;padding:10px 14px;box-shadow:0 3px 10px rgba(0,0,0,.3)}
+.hero-logo img{display:block;width:120px;height:auto}
+.hero .eyebrow{color:#BFF1F2}
+.hero h1{margin:4px 0 0;color:#fff}
+.hero-wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:22px}
+.hero-wave path{fill:var(--bg)}
+@media (max-width:420px){.hero{padding:18px 16px 30px;gap:12px}.hero-logo{padding:8px 10px}.hero-logo img{width:92px}.hero h1{font-size:32px}}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent)}
+h1{margin:4px 0 12px;font-size:40px;line-height:1.1}
+.chip{display:inline-block;font-size:13px;font-weight:700;padding:7px 12px;border-radius:999px;margin:0 6px 6px 0}
+.m{background:var(--m-bg);color:var(--m-fg)}.w{background:var(--w-bg);color:var(--w-fg)}.f{background:var(--f-bg);color:var(--f-fg)}
+.hint{color:var(--muted);font-size:16px;margin:8px 0 8px}
+.wk{font-size:14px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin:28px 0 10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:0 0 14px}
+.date{font-size:15px;font-weight:700;margin-bottom:8px}
+.note{display:inline-block;font-size:12px;font-weight:700;background:var(--note-bg);color:var(--note-fg);padding:3px 8px;border-radius:6px;margin-left:6px}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:4px 8px;border-radius:6px}
+h3{margin:10px 0 4px;font-size:20px;line-height:1.25}
+.d{margin:0 0 12px;color:var(--muted);font-size:15px}
+.lbl{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin:10px 0 6px}
+.cap{background:var(--soft);border-radius:10px;padding:12px;margin:0;font-size:16px;white-space:pre-wrap;-webkit-user-select:all;user-select:all;border:2px dashed var(--line)}
+.acts{margin:0}
+.btn{display:inline-block;font-size:16px;font-weight:700;padding:12px 16px;border-radius:10px;border:2px solid var(--accent);background:var(--accent);color:var(--bg);text-decoration:none;margin:0 8px 8px 0;font-family:inherit}
+.btn.alt{background:transparent;color:var(--accent)}
+.btn.off{color:var(--muted);border-color:var(--line)}
+.ok{font-size:14px;color:var(--accent);margin-left:4px}
+.png{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--line)}
+.howto{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:14px;padding:14px 16px;margin:16px 0 8px}
+.howto-h{font-size:17px;font-weight:700;margin-bottom:6px}
+.howto p{margin:6px 0;font-size:15px;color:var(--ink)}
+.tip{font-size:14px;color:var(--muted);margin:8px 0 0}
+.flyer{position:relative}
+.reel{width:100%;max-width:420px;height:auto;display:block;margin:0 auto;border-radius:10px;border:1px solid var(--line);background:#000}
+.reel.wide{max-width:100%}
+.vnote{color:var(--muted);font-size:15px;margin:10px 0 0;padding:10px 12px;background:var(--soft);border-radius:10px}
+.png{-webkit-touch-callout:default}
+.saveacts{margin:12px 0 0}
+.months{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.months a{font-size:15px;font-weight:700;padding:9px 14px;border-radius:999px;border:2px solid var(--accent);color:var(--accent);text-decoration:none}
+.months a.on{background:var(--accent);color:var(--bg)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+<div class="hero-logo"><img src="images/go-travel-logo.png" width="480" height="330" alt="Go Travel"></div>
+<div class="hero-text">
+<div class="eyebrow">Go Travel Monthly Marketing Toolkit</div>
+<h1>January 2027</h1>
+</div>
+<svg class="hero-wave" viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 C 100 4, 200 40, 300 22 S 500 4, 600 22 L600 40 L0 40 Z"/></svg>
+</header>
+<nav class="months" aria-label="Choose a month"><a href="december-2026.html">December 2026</a><a href="january-2027.html" class="on" aria-current="page">January 2027</a></nav>
+<p class="hint">Every post has a ready-to-post caption and one format: a Canva graphic, a video or a Reel. Tap <strong>Copy caption</strong> on any post, then paste it into your own post.</p>
+<div class="howto">
+<div class="howto-h">How to save a graphic, video or Reel</div>
+<p><strong>Android:</strong> Tap the <strong>Save image</strong> button under the graphic. It saves to the Download album in your Gallery or Photos app.</p>
+<p><strong>iPhone:</strong> Tap the <strong>Save image</strong> button under the graphic, then tap <strong>Save Image</strong>. It goes to your Photos.</p>
+<p><strong>Windows computer:</strong> Click the <strong>Save image</strong> button under the graphic. It saves to your Downloads folder.</p>
+<p><strong>Mac:</strong> Click the <strong>Save image</strong> button under the graphic. It saves to your Downloads folder. To put it in Photos instead, Control-click the graphic in Safari and choose <strong>Add Image to Photos</strong>.</p>
+<p><strong>Videos and Reels:</strong> Tap the <strong>Save video</strong> button under the video or Reel (on iPhone, then tap <strong>Save Video</strong>). It saves the same places as graphics. On a computer, the video may open first: right-click it (on a Mac, Control-click) and choose <strong>Save video as</strong>, or use the <strong>⋮</strong> menu and choose <strong>Download</strong>. Add it to your post and paste in the caption with <strong>Copy caption</strong>.</p>
+</div>
+<h2 class="wk">Jan 4 to 8</h2>
+<div class="card">
+<div class="date">Monday, January 4</div>
+<h3>Plan Your 2027 Travel Year</h3>
+<div class="lbl">Caption</div>
+<p class="cap">New year, new adventures! ✈️
+
+January is the perfect time to map out your travel plans for the year ahead. Booking early often means better prices, more choice and the best cabins, rooms and flights.
+
+Whether it's a winter sun escape, a summer in Europe or that bucket-list trip you keep putting off, let's make 2027 the year it happens.
+
+Send me a message and let's start planning your travel year!
+
+#Travel2027 #TravelPlanning #NewYearNewAdventures #GoTravel</p>
+<div class="lbl">Format: Canva graphic</div>
+<p class="acts"><span class="btn alt off">Download Canva graphic: link coming soon</span></p>
+</div>
+<div class="card">
+<div class="date">Wednesday, January 6</div>
+<span class="tag w">Wanderlust Wednesday</span>
+<h3>Escape The Cold</h3>
+<div class="lbl">Caption</div>
+<p class="cap">Dreaming of sunshine yet? ☀️
+
+When the temperature drops, there's nothing better than trading your parka for flip-flops. From the beaches of Mexico and the Dominican Republic to the turquoise water of the Caribbean, warm weather is just a flight away.
+
+All-inclusive resorts make it easy: your meals, drinks and entertainment are taken care of, so all you have to do is relax.
+
+Ready to escape winter? Message me and I'll find the perfect sun getaway for you!
+
+#WanderlustWednesday #WinterEscape #SunDestinations #AllInclusive #GoTravel</p>
+<div class="lbl">Format: Reel</div>
+<p class="acts"><span class="btn alt off">Open Reel: link coming soon</span></p>
+</div>
+<div class="card">
+<div class="date">Friday, January 8</div>
+<h3>Ensemble Partner Spotlight</h3>
+<div class="lbl">Caption</div>
+<p class="cap">Proud to feature our Ensemble partner, [Partner]! 🌟
+
+[Promotion details]
+
+As an Ensemble member, I have access to special offers, added amenities and expert support from some of the best names in travel, and I pass those benefits on to you.
+
+Message me to learn more or to book!
+
+#Ensemble #[PartnerHashtag] #TravelDeals #TravelAdvisor #GoTravel</p>
+<div class="lbl">Format: Reel</div>
+<p class="acts"><span class="btn alt off">Open Reel: link coming soon</span></p>
+</div>
+<h2 class="wk">Jan 11 to 15</h2>
+<div class="card">
+<div class="date">Monday, January 11</div>
+<h3>Check Your Passport</h3>
+<div class="lbl">Caption</div>
+<p class="cap">Quick travel tip: check your passport today! 🛂
+
+Many countries require your passport to be valid for at least six months after your travel dates, and some airlines won't let you board without it.
+
+Take a minute to check the expiry date for everyone in your family. If it's time to renew, start now so you're not rushing before your trip.
+
+Have questions about travel documents for your next trip? Just ask!
+
+#TravelTips #PassportCheck #TravelReady #GoTravel</p>
+<div class="lbl">Format: Canva graphic</div>
+<p class="acts"><span class="btn alt off">Download Canva graphic: link coming soon</span></p>
+</div>
+<div class="card">
+<div class="date">Wednesday, January 13</div>
+<span class="tag w">Wanderlust Wednesday</span>
+<h3>Europe This Summer</h3>
+<div class="lbl">Caption</div>
+<p class="cap">Summer in Europe is calling! 🇪🇺
+
+Sipping espresso in Italy, wandering the streets of Paris, island hopping in Greece or cruising along the Rhine… Europe in summer is pure magic.
+
+The most popular hotels, tours and cruises fill up early, so now is the time to lock in your plans.
+
+Thinking about Europe this year? Message me and let's start building your dream itinerary!
+
+#WanderlustWednesday #EuropeTravel #SummerInEurope #Travel2027 #GoTravel</p>
+<div class="lbl">Format: Reel</div>
+<p class="acts"><span class="btn alt off">Open Reel: link coming soon</span></p>
+</div>
+<div class="card">
+<div class="date">Friday, January 15</div>
+<h3>Wave Season Is Here</h3>
+<div class="lbl">Caption</div>
+<p class="cap">Wave Season is officially here! 🌊
+
+From now until March, cruise lines roll out some of their best offers of the year, including reduced deposits, onboard credit, cabin upgrades and added perks.
+
+Whether you're dreaming of the Caribbean, Alaska, Europe or your very first cruise, this is the best time of year to book.
+
+Send me a message and I'll help you find the right cruise and the best Wave Season offer!
+
+#WaveSeason #CruiseDeals #Cruise2027 #CruiseLife #GoTravel</p>
+<div class="lbl">Format: Reel</div>
+<p class="acts"><span class="btn alt off">Open Reel: link coming soon</span></p>
+</div>
+<h2 class="wk">Jan 18 to 22</h2>
+<div class="card">
+<div class="date">Monday, January 18</div>
+<h3>Beat The January Blues</h3>
+<div class="lbl">Caption</div>
+<p class="cap">Feeling the January blues? ❄️
+
+Short days, cold weather and holiday bills can make January feel long. The best cure? Something to look forward to!
+
+Studies have shown that just planning a vacation can boost your mood. So go ahead, start dreaming about your next getaway.
+
+Message me and let's plan something to look forward to!
+
+#BeatTheBlues #TravelPlanning #SomethingToLookForwardTo #GoTravel</p>
+<div class="lbl">Format: Canva graphic</div>
+<p class="acts"><span class="btn alt off">Download Canva graphic: link coming soon</span></p>
+</div>
+<div class="card">
+<div class="date">Wednesday, January 20</div>
+<span class="tag w">Wanderlust Wednesday</span>
+<h3>Alaska Cruise Season 2027</h3>
+<div class="lbl">Caption</div>
+<p class="cap">Alaska is on our list for 2027! 🏔️
+
+Glaciers, whales, eagles and breathtaking mountain views. An Alaska cruise is one of the most unforgettable ways to experience the Last Frontier.
+
+The season runs from May to September, and the best cabins and sailing dates go fast, so now is the time to book.
+
+Ready to see Alaska? Message me and I'll help you find the perfect sailing!
+
+#WanderlustWednesday #AlaskaCruise #Alaska #CruiseLife #GoTravel</p>
+<div class="lbl">Format: Reel</div>
+<p class="acts"><span class="btn alt off">Open Reel: link coming soon</span></p>
+</div>
+<div class="card">
+<div class="date">Friday, January 22</div>
+<h3>Spring Break Is Coming</h3>
+<div class="lbl">Caption</div>
+<p class="cap">Spring break is closer than you think! 🌴
+
+Whether it's a family beach vacation, a Disney adventure or a quick getaway for the grown-ups, spring break is one of the busiest times of year to travel.
+
+Flights and resorts fill up fast, so booking now means more choice and better availability.
+
+Let's get your spring break plans sorted. Send me a message today!
+
+#SpringBreak #FamilyVacation #BeachVacation #GoTravel</p>
+<div class="lbl">Format: Canva graphic</div>
+<p class="acts"><span class="btn alt off">Download Canva graphic: link coming soon</span></p>
+</div>
+<h2 class="wk">Jan 25 to 29</h2>
+<div class="card">
+<div class="date">Monday, January 25</div>
+<h3>Don't Travel Without Insurance</h3>
+<div class="lbl">Caption</div>
+<p class="cap">Don't leave home without it! 🧳
+
+Travel insurance can protect you from the unexpected, like trip cancellations, medical emergencies, lost luggage and flight delays.
+
+The right coverage can save you thousands and give you peace of mind while you're away.
+
+Have questions about which coverage is right for your trip? I'm happy to help!
+
+#TravelInsurance #TravelTips #TravelSmart #GoTravel</p>
+<div class="lbl">Format: Canva graphic</div>
+<p class="acts"><span class="btn alt off">Download Canva graphic: link coming soon</span></p>
+</div>
+<div class="card">
+<div class="date">Wednesday, January 27</div>
+<span class="tag w">Wanderlust Wednesday</span>
+<h3>Romantic Getaways</h3>
+<div class="lbl">Caption</div>
+<p class="cap">Valentine's Day is coming! ❤️
+
+Skip the chocolates and give the gift of a getaway. Picture a sunset dinner on the beach, an overwater bungalow, a cozy mountain lodge or a romantic city break in Europe.
+
+Whether you're celebrating an anniversary, a honeymoon or just some time together, I can help plan the perfect escape for two.
+
+Message me and let's plan something special!
+
+#WanderlustWednesday #RomanticGetaway #CouplesTravel #ValentinesDay #GoTravel</p>
+<div class="lbl">Format: Reel</div>
+<p class="acts"><span class="btn alt off">Open Reel: link coming soon</span></p>
+</div>
+<div class="card">
+<div class="date">Friday, January 29</div>
+<h3>Why Book With A Travel Advisor</h3>
+<div class="lbl">Caption</div>
+<p class="cap">Why book with a travel advisor? 🤔
+
+✅ Expert advice and personal recommendations
+✅ Access to special offers and added perks
+✅ Help with every detail, from flights to transfers
+✅ Someone in your corner if plans change
+✅ Often no extra cost to you
+
+You get all the fun of planning without the stress. Let me take care of the details so you can enjoy the trip!
+
+#TravelAdvisor #BookWithAnAdvisor #TravelExpert #GoTravel</p>
+<div class="lbl">Format: Reel</div>
+<p class="acts"><span class="btn alt off">Open Reel: link coming soon</span></p>
+</div>
+</div>
+<script>
+(function(){try{
+var caps=document.getElementsByClassName("cap");
+for(var i=0;i<caps.length;i++){(function(c){
+var b=document.createElement("button");b.type="button";b.className="btn";b.textContent="Copy caption";
+var m=document.createElement("span");m.className="ok";
+b.onclick=function(){var t=c.textContent;
+function done(){m.textContent="Copied."}
+function fb(){var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");done()}catch(x){m.textContent="Touch and hold the caption to copy."}document.body.removeChild(a)}
+try{navigator.clipboard.writeText(t).then(done,fb)}catch(x){fb()}};
+var acts=c.parentNode.querySelector(".acts");acts.insertBefore(m,acts.firstChild);acts.insertBefore(b,acts.firstChild);
+})(caps[i])}
+}catch(e){}})();
+</script>
+<script>
+(function(){
+function toFile(img,name){
+  var u=img.currentSrc||img.src;
+  if(u.indexOf('data:')===0){
+    var p=u.split(','),mime=(p[0].match(/data:([^;]+)/)||[,'image/png'])[1],b=atob(p[1]),a=new Uint8Array(b.length);
+    for(var i=0;i<b.length;i++)a[i]=b.charCodeAt(i);
+    return Promise.resolve(new File([a],name,{type:mime}));
+  }
+  return fetch(u).then(function(r){return r.blob()}).then(function(bl){return new File([bl],name,{type:bl.type||(img.tagName==='VIDEO'?'video/mp4':'image/png')})});
+}
+var dl=null;
+try{if(window.claude&&claude.use)claude.use('downloads').then(function(d){dl=d}).catch(function(){})}catch(e){}
+function download(file){
+  if(dl){dl.save({filename:file.name,data:file}).catch(function(){});return}
+  var a=document.createElement('a');a.href=URL.createObjectURL(file);a.download=file.name;
+  document.body.appendChild(a);a.click();
+  setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},4000);
+}
+var imgs=document.querySelectorAll('.flyer img.png, .flyer video.reel');
+for(var k=0;k<imgs.length;k++)(function(img,k){
+  var card=img.closest('.card'),d=card&&card.querySelector('.date');
+  var isVid=img.tagName==='VIDEO';
+  var name='GoTravel-'+((d?d.firstChild.textContent:'image-'+(k+1)).trim().replace(/[^A-Za-z0-9]+/g,'-'))+(isVid?(img.classList.contains('wide')?'-Video.mp4':'-Reel.mp4'):'.png');
+  var p=document.createElement('p');p.className='saveacts';
+  var b=document.createElement('button');b.type='button';b.className='btn';b.textContent=isVid?'Save video':'Save image';
+  var m=document.createElement('span');m.className='ok';
+  p.appendChild(b);p.appendChild(m);img.closest('.flyer').insertAdjacentElement('afterend',p);
+  var file=null;
+  // Build the file ahead of time: iPhone only opens the share menu if it happens right on the tap.
+  // Videos load when they come near the screen, so visitors don't download every Reel up front.
+  function prep(){if(!file)toFile(img,name).then(function(f){file=f}).catch(function(){})}
+  if(isVid&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();prep()}},{rootMargin:'800px'});io.observe(img)}else prep();
+  b.onclick=function(){
+    if(!file){m.textContent='Still loading, try again in a few seconds.';prep();return}
+    m.textContent='';
+    var isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+    if(isIOS&&navigator.canShare&&navigator.canShare({files:[file]})){
+      navigator.share({files:[file]}).catch(function(e){
+        if(e&&e.name!=='AbortError'){download(file);m.textContent='Downloaded.'}
+      });
+    }else{download(file);m.textContent='Downloaded.'}
+  };
+})(imgs[k],k);
+})();
+</script>
+</body>
+</html>
